@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import 'tachyons'
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import Landing from './Landing';
 
 
 

@@ -1,0 +1,29 @@
+GET http://0.0.0.0:3002/members
+
+###
+
+GET http://0.0.0.0:3002/members/6525308c219c934bf56ccc92
+
+
+###
+
+POST http://0.0.0.0:3002/members
+Content-Type: application/json
+
+{
+    "name": "Blessing",
+    "age": 30
+}
+
+###
+
+DELETE http://0.0.0.0:3002/members/6525308c219c934bf56ccc92
+
+###
+
+PATCH http://0.0.0.0:3002/members/652530b6219c934bf56ccc96
+Content-Type: application/json
+
+{
+    "name": "Makinde"
+}

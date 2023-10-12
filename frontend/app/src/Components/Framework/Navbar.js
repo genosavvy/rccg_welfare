@@ -1,13 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import './Navbar.css';
 
 
 function AppNavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect expand="lg"  className="bg-body-tertiary justify-content-between">
       <Container>
-        <Navbar.Brand href="#home">Celebration</Navbar.Brand>
+        <Navbar.Brand href="#home" className='theme-logo'>Celebration</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -16,7 +17,7 @@ function AppNavBar() {
             
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link href="#deets">Calender</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Log Out
             </Nav.Link>

@@ -2,8 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React from "react";
-import FormPage from "./Forms";
-import AppNavBar from './Navbar';
+import FormPage from "./Components/Forms/Forms";
+import AppNavBar from './Components/Framework/Navbar';
+import Logo from './Components/Framework/Logo';
+
 
 
 const App = () => {
@@ -13,9 +15,12 @@ const App = () => {
                 <AppNavBar />
             </Row>
             <Row>
-                <Col></Col>
+                <Col md="3">
+                    <Logo/>
+                </Col>
                 <Col md="9">
                     <FormPage />
+                    {/* <LoginSignup /> */}
                 </Col>
             </Row>
             
