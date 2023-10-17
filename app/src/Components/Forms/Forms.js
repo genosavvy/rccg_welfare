@@ -13,90 +13,38 @@ function FormPage() {
     firstname:'',
     lastname: '',
     birthday: '',
-    wedding: ''
+    wedding: '',
+    consent: false
   }
+
   const [validated, setValidated] = useState(false);
-  const [formvalues, setFormvalues] = useState( forminputs );
-  const [isChecked, setIsChecked] = useState(false)
-  const [records, setRecords] = useState([])
-  const [consent, setConsent] = useState({})
-
-  // const [ result, setResult ] = useState({
-
-  // })
+  const [formvalues, setFormvalues] = useState( forminputs ); 
+ 
 
   // Handle form input values 
   const onInputChange = event => {
-    event.preventDefault();
     // const { name, value } = event.target;
 
-    setFormvalues({...formvalues,[event.target.name]: event.target.value});    
-  };
+    if (event.target.name === 'consent') {
 
-  // Handle checkbox value 
-  const handleOnChecked = (e) => {
-   
-    setIsChecked(!isChecked);
-    if (!isChecked) {
-      const checkedValue = e.target.value;
-      const checkedName = e.target.name;
-      setConsent({consent, [checkedName]: checkedValue});
-      console.log(consent);
+      setFormvalues({...formvalues,[event.target.name]: event.target.checked}); 
+      return
     }
-    
-
-    
-
+    setFormvalues({...formvalues,[event.target.name]: event.target.value});        
   };
 
-  // const handleClick= () => setPost({
-  //   firstname:'',
-  //   lastname: '',
-  //   birthday: '',
-  //   wedding: '',
-  //   consent: ''
-  // })
+  // Handle form submission 
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      // event.preventDefault();
-      event.stopPropagation();
-    }else{
-      event.preventDefault();
-      event.stopPropagation();
-
-      const formrecords = {...formvalues, ...consent}
-
-      setRecords([...records, formrecords]);
-
-      console.log(records)
-      // const checked = e.target.checked;
-      
-
-      setFormvalues( forminputs );
-      setIsChecked(!isChecked);
-
-      // Instance.post('/members', {...post})
-      // .then((response) => {
-      //   console.log(response.status);
-      //   console.log(response.headers)
-      //   console.log(response.data)
-      // })
-      // .catch((e)=> {
-      //   console.log(e)
-      // })
-    }
-
-
-  };
-
-  
+    event.preventDefault();
+    console.log(formvalues)
+    setFormvalues(forminputs)       
+    }  
 
   return (
     <section className='formsection'>
     <div className='form-content'>
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Row className='header'>
         <h1>Special Day Register </h1>
       </Row>
@@ -166,14 +114,14 @@ function FormPage() {
           feedback="You must agree before submitting."
           feedbackType="invalid"
           name='consent'
-          value="consented"
-          checked = {isChecked}
-          onChange= {handleOnChecked}
+          value={formvalues.consent}
+          checked = {formvalues.consent}
+          onChange= {onInputChange}
         />
       </Form.Group>
       </div>
       <div className='submitbutton'>
-      <Button type="submit" className ='center' onSubmit={handleSubmit} >Submit form</Button>
+      <Button type="submit" className ='center'>Submit form</Button>
       </div>
     </Form>
     </div>
