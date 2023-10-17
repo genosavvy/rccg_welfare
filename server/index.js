@@ -21,7 +21,7 @@ app.use(cors())
 app.use(express.json())
 
 const memberRouter = require('./routes/Members')
-app.use('/members', memberRouter)
+app.use('/register', memberRouter)
 
 
 
