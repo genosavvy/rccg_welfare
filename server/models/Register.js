@@ -13,7 +13,7 @@ const regSchema = new mongoose.Schema({
     },
     birthday : {
         type: Date,
-        required: false
+        required: true
         },
 
     wedding : {
@@ -36,4 +36,4 @@ const regSchema = new mongoose.Schema({
 
 const register = mongoose.model("register", regSchema)
 
-module.exports  = register   
+module.exports  = register

@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import './Forms.css';
 import Instance from '../Instance';
+import './Forms.css';
 
 
 
@@ -18,28 +18,36 @@ function FormPage() {
   }
 
   const [validated, setValidated] = useState(false);
-  const [formvalues, setFormvalues] = useState( forminputs ); 
+  const [formvalues, setFormvalues] = useState( forminputs );
  
 
-  // Handle form input values 
+  // Handle form input values
   const onInputChange = event => {
     // const { name, value } = event.target;
 
     if (event.target.name === 'consent') {
 
-      setFormvalues({...formvalues,[event.target.name]: event.target.checked}); 
+      setFormvalues({...formvalues,[event.target.name]: event.target.checked});
       return
     }
-    setFormvalues({...formvalues,[event.target.name]: event.target.value});        
+    setFormvalues({...formvalues,[event.target.name]: event.target.value});
   };
 
-  // Handle form submission 
+  // Handle form submission
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formvalues)
-    setFormvalues(forminputs)       
-    }  
+    Instance.post('/register', {...formvalues})
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+      })
+      .catch((e)=> {
+        console.log(e)
+      })
+    setFormvalues(forminputs)
+    }
 
   return (
     <section className='formsection'>
@@ -58,7 +66,7 @@ function FormPage() {
             name='firstname'
             value={formvalues.firstname}
             placeholder="First name"
-            onChange={onInputChange}            
+            onChange={onInputChange}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
