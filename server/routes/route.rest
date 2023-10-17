@@ -1,0 +1,30 @@
+GET http://0.0.0.0:3002/members
+
+###
+
+GET http://0.0.0.0:3002/members/6525309e219c934bf56ccc94
+
+
+###
+
+POST http://0.0.0.0:3002/members
+Content-Type: application/json
+
+{
+    "firstname": "Elijah",
+    "lastname": "King",
+    "consent": true
+}
+
+###
+
+DELETE http://0.0.0.0:3002/members/652baa7d3acf4575c6b69810
+
+###
+
+PATCH http://0.0.0.0:3002/members/652530b6219c934bf56ccc96
+Content-Type: application/json
+
+{
+    "name": "Elijah"
+}
