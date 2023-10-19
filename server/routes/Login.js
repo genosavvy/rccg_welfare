@@ -18,11 +18,10 @@ userLoginRouter.post('/', async (req, res) => {
     }
     try {
         if( await bcrypt.compare(req.body.password, user[0].password)){
-            res.send("Success")
+           return res.status(201).json("Login successfully")
         } else {
-            res.send("Access not allowed")
+           return res.status(200).send("Access not allowed")
         }
-
     }catch{
         res.status(500).send()
     }

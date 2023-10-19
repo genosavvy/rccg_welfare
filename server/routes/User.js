@@ -26,24 +26,17 @@ userRouter.post('/', async (req, res) => {
 
 })
 
-// userRouter.post('/', async (req, res) => {
-//     const users = new Users_auth.find
-//     const user = users.find(user = user.name === req.body.name)
-//     if (user == null){
-//         return res.status(400).send('Cannot find user record')
-//     }
-//     try {
-//         if( await bcrypt.compare(req.body.password, user.password)){
-//             res.send("Success")
-//         } else {
-//             res.send("Access not allowed")
-//         }
-        
+userRouter.get("/", async (req, res) => {
+    try{
+        const users = await Users_auth.find()
+        res.status(201).json(users)
 
-//     }catch{
-//         res.status(500).send()
-//     }
-// })
+    }catch(err){
+        res.status(500).json({message: err.message})
+
+    }
+
+})
 
 
 module.exports = userRouter

@@ -5,6 +5,10 @@ import './Navbar.css';
 
 
 function AppNavBar() {
+  const handleClick = () => {
+    window.localStorage.clear();
+    window.location.href = "/";
+  }
   return (
     <Navbar collapseOnSelect expand="lg"  className="bg-body-tertiary justify-content-between">
       <Container>
@@ -18,7 +22,7 @@ function AppNavBar() {
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Calender</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link eventKey={2} onClick= {handleClick} >
               Log Out
             </Nav.Link>
           </Nav>

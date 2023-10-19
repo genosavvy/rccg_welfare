@@ -1,11 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'tachyons';
+import App from './App';
+import LoginPage from './Components/Forms/LoginPage';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from './App';
-import 'tachyons'
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import Landing from './Landing';
 
 
 
@@ -13,7 +14,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route index element = {<LoginPage />} />
+        <Route path='App' element = {<App />} />
+      </Routes>
+    
+    </BrowserRouter>
+  
     
   </React.StrictMode>
 );
